@@ -1,5 +1,5 @@
 GDAL==3.0.4
-numpy
+numpy==1.19.1
 matplotlib
 rasterio
 shapely
