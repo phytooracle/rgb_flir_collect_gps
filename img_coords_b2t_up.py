@@ -69,23 +69,41 @@ def main():
         gps = []
         filename = os.path.basename(i)
         ds = gdal.Open(i)
-        # print(filename)
+        print(filename)
         meta = gdal.Info(ds)
         coord_list = []
         lines = meta.splitlines()
         coord_sys = lines[17]
+
         # Split line to get only the coordiantes
-        u_l = lines[35].split()[2:4]
-        l_l = lines[36].split()[2:4]
-        u_r = lines[37].split()[2:4]
-        l_r = lines[38].split()[2:4]
-        center = lines[39].split()[1:3]
+        for line in lines:
+            if 'Upper Left' in line:
+                u_l = line.split()[2:4]
+                u_l = ' '.join(u_l).strip('()')
+                print(f'Upper left: {u_l}')
+            
+            if 'Lower Left' in line:
+                l_l = line.split()[2:4]
+                l_l = ' '.join(l_l).strip('()')
+                print(f'Lower left: {l_l}')
+
+            if 'Upper Right' in line: 
+                u_r = line.split()[2:4]
+                u_r = ' '.join(u_r).strip('()')
+                print(f'Upper right: {u_r}')
+
+            if 'Lower Right' in line:
+                l_r = line.split()[2:4]
+                l_r = ' '.join(l_r).strip('()')
+                print(f'Lower right: {l_r}')
+
+            if 'Center' in line:
+                center = line.split()[1:3]
+                center = ' '.join(center).strip('()')
+                print(f'Center: {center}')
+
         # Join the coordinates into a string
-        u_l = ' '.join(u_l).strip('()')
-        l_l = ' '.join(l_l).strip('()')
-        u_r = ' '.join(u_r).strip('()')
-        l_r = ' '.join(l_r).strip('()')
-        center = ' '.join(center).strip('()')
+        
         file_list.append(filename)
         u_l_list.append(u_l)
         l_l_list.append(l_l)
