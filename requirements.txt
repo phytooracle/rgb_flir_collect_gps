@@ -1,10 +1,4 @@
 GDAL==3.0.4
 numpy==1.19.1
-matplotlib
-rasterio
-shapely
-geopandas
-earthpy
-Rtree
-earthpy
-seaborn
+matplotlib==3.2.1
+pandas==1.0.3
