@@ -1,6 +1,10 @@
 # Collect GPS
 
+This script extracts GPS coordinates from images and saves them to a CSV file. 
+
 ## Inputs
+
+The input is a directory path containing GeoTIFF images that contain georeferencing metadata.
 
 ## Outputs
 
@@ -12,8 +16,3 @@
                 
 * **Optional Arguments:**
     * **Output directory:** '-o', '--outdir', default='img_coords_out/'
-       
-## Adapting the Script
-                                        
-### Example
-
